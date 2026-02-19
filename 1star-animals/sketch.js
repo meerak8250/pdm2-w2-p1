@@ -1,8 +1,19 @@
-//let animal1;
+let animal1;
 let bear;
 let cat;
 let monkey;
 
+class Animal {
+    constructor(x, y, image) {
+        this.x = x;
+        this.y = y;
+        this.image = image;
+    }
+
+    display() {
+        image(this.image, this.x, this.y);
+    }
+}
 function preload() {
     bear = loadImage("assets/bear.jpg")
     cat = loadImage("assets/cat.jpg")
@@ -26,6 +37,20 @@ function draw() {
 function keyPressed() {
     // TODO move the animal in response to the WASD keys
     if (key === "w") {
-        animal1.moveY(-10);
-    } // etc
+        bear.moveY(-10);
+        cat.moveY(-10);
+        monkey.moveY(-10);
+    } else if (key === "s") {
+        bear.moveY(10);
+        cat.moveY(10);
+        monkey.moveY(10);
+    } else if (key === "a") {
+        bear.moveX(-10);
+        cat.moveX(-10);
+        monkey.moveX(-10);
+    } else if (key === "d") {
+        bear.moveX(10);
+        cat.moveX(10);
+        monkey.moveX(10);
+    }
 }
