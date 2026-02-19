@@ -1,9 +1,13 @@
-let animal1;
+//let animal1;
 let bear;
 let cat;
 let monkey;
 
 class Animal {
+    x;
+    y;
+    image;
+
     constructor(x, y, image) {
         this.x = x;
         this.y = y;
@@ -13,18 +17,24 @@ class Animal {
     display() {
         image(this.image, this.x, this.y);
     }
+
+    moveX(amount) {
+        this.x += amount;
+    }
+
+    moveY(amount) {
+        this.y += amount;
+    }
 }
+
 function preload() {
-    bear = loadImage("assets/bear.jpg")
-    cat = loadImage("assets/cat.jpg")
-    monkey = loadImage("assets/monkey.jpg")
+    bear = new Animal(100, 100, loadImage("assets/bear.jpg"));
+    cat = new Animal(200, 100, loadImage("assets/cat.jpg"));
+    monkey = new Animal(300, 100, loadImage("assets/monkey.jpg"));
 }
 
 function setup() {
     createCanvas(400, 400);
-    bear = new Animal(bear);
-    cat = new Animal(cat);
-    monkey = new Animal(monkey);
 }
 
 function draw() {
@@ -35,7 +45,7 @@ function draw() {
 }
 
 function keyPressed() {
-    // TODO move the animal in response to the WASD keys
+    // Move the animal in response to the WASD keys
     if (key === "w") {
         bear.moveY(-10);
         cat.moveY(-10);
@@ -54,3 +64,4 @@ function keyPressed() {
         monkey.moveX(10);
     }
 }
+
